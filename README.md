@@ -42,3 +42,64 @@ These two sentences can be prepared in a CoNLL formatted text file as follows.
 * the O
 * Disney B-facility
 * World I-facility
+
+
+### Evaluation Criteria:
+1. Defining problem statement, importing the data and data structure analysis
+   * 1.1 Loading and formatting the data
+2. Getting the correct model and tokenizer
+3. Data preprocessing and tokenization
+   * 1.1 Preparing the data in the correct format
+   * 1.2 Tokenizing the data correctly
+4. Train the model
+5. Try different hyperparameters
+6. Make predictions
+   * 6.1 Join the subtokens
+   * 6.2 Prediction on your own sentences
+
+
+### Questions
+
+1. Defining the problem statements and where can this and modifications of this be used?
+2. Explain the data format (conll bio format)
+3. What other ner data annotation formats are available and how are they different
+4. Why do we need tokenization of the data in our case
+5. What other models can you use for this task
+6. Did early stopping have any effect on the training and results.
+7. How does the BERT model expect a pair of sentences to be processed?
+8. Why choose Attention based models over Recurrent based ones?
+9. Differentiate BERT and simple transformers
+
+
+### Process
+* Import the test, train data and understand the structure of the data.
+  - usual exploratory analysis steps like checking the structure & characteristics of the dataset
+* Data preprocessing
+  - Preparing the data in the format required by models
+* Training a LSTM + CRF Model
+  - Note: Please only use Tensorflow version 2.15 , run the below command
+    * !pip install tensorflow==2.15
+  - Use a word2vec model to initialize embeddings
+* Train a Tensorflow Tokenizer
+* Train test split the data
+* Train the model
+  - Understand the implications of using bidirectional models
+  - Try various hyperparameters to improve results
+* Align labels to input
+  - Compute metrics to show effectiveness of trained model
+* Loading the Transformer model
+  - You can use the 'bert-base-uncased' model from the transformers library
+  - Load the model and the model config
+* Get the tokenizer for that model
+* Tokenize the data
+  - Understand what change tokenization has done to the data
+  - After tokenizing check if the data is correct and do we need to remove or add some tokens
+* Train test split the data
+* Train the model on the data
+  - Try various hyperparameters
+  - Try different training epochs, early stopping, various optimizer,metrics
+* Align the output for each sub tokens
+  - Because we have result for sub tokens we need to combine back the tokens
+* Make some predictions and see if the trained models are working fine
+  - Save the transformers model with model.save_pretrained method
+  - Check the result on some of your own sentences
